@@ -1,0 +1,82 @@
+/*
+* color.css。
+* ほぼ全部のHTMLに対応している。
+* 背景色を使う場合：color.css。
+* 背景画を使う場合：welcome.css。
+*/
+@charset "UTF-8";
+
+/* HEAD部分（中央揃え／背景色） */
+.head {
+	text-align: center;
+	font-family:serif; 
+	background-color:maroon;
+}
+
+
+/* TITLE部分（中央揃え） */
+.title{
+	text-align: center;
+	font-family:serif; 
+	background-color:maroon;
+}
+
+
+/* BODY部分（中央揃え／書体／背景色） */
+.body{
+	text-align: center;
+	font-family:serif; 
+	background-color:maroon;
+}
+
+/* 見出し（各レベルごと）部分（中央揃え／文字サイズの指定） */
+.h1{
+	text-align: center;
+	font-size: 28px;
+}
+
+.h2 {
+	font-size: 24px;
+}
+
+.h3{
+	font-size: 22px;
+}
+
+/* 
+* プルダウンメニューの文字を変える。効いてなさそう。
+*/
+.select {
+	font-size: 24px;
+	font-family:serif; 
+}
+
+/* 入力フォーム（余白での中央揃え／フォントの指定） */
+.T_table {
+	margin:auto;
+	text-align: center;
+	font-family:serif; 
+	font-size: 24px;
+}
+
+/*
+*  「提案画面」で表示される「店舗テーブル」の部分
+*/
+.p{
+	margin:auto;
+	text-align: center;
+}
+
+.Likes{
+   position: relative;
+ }
+.Likes-Icon{
+   position: absolute;
+   left: -48px;
+   background: url("./img/heart_animation.png");
+   background-position: left;
+   background-size: 2900%;
+   background-repeat: no-repeat;
+   width: 105px;
+   height: 105px;
+ }
