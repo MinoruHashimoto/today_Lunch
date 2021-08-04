@@ -72,6 +72,8 @@
 					<source>11</source>
 					<target>11</target>
 					<verbose>true</verbose>
+					<fork>true</fork>
+					<executable>C:\pleiades\java\11\bin\javac</executable>
 				</configuration>
 			</plugin>
 			<plugin>
