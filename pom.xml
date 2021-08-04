@@ -71,6 +71,7 @@
 				<configuration>
 					<source>11</source>
 					<target>11</target>
+					<verbose>true</verbose>
 				</configuration>
 			</plugin>
 			<plugin>
