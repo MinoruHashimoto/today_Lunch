@@ -1,4 +1,4 @@
-//ACCOUNTテーブルを担当するDAO
+//accountテーブルを担当するDAO
 
 package dao;
 
