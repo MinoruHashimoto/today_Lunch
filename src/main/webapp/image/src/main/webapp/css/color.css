@@ -1,0 +1,254 @@
+/*
+* color.css。
+* ほぼ全部のHTMLに対応している。
+* 背景色を使う場合：color.css。
+* 背景画を使う場合：welcome.css。
+*/
+@charset "UTF-8";
+
+/* HEAD部分（中央揃え／背景色） */
+.head {
+	text-align: center;
+	font-family: serif;
+}
+
+/* TITLE部分（中央揃え） */
+.title {
+	text-align: center;
+	font-family: serif;
+}
+
+/* BODY部分（中央揃え／書体／背景色） */
+.body {
+	text-align: center;
+	font-family: serif;
+}
+
+/* 見出し（各レベルごと）部分（中央揃え／文字サイズの指定） */
+.h1 {
+	text-align: center;
+	font-size: 28px;
+}
+
+.h2 {
+	font-size: 24px;
+}
+
+.h3 {
+	font-size: 22px;
+}
+
+/* 
+* プルダウンメニューの文字を変える。まったく効いてなさそう。
+*/
+.select {
+	font-size: 24px;
+	font-family: serif;
+	border: none;
+}
+
+/* 入力フォーム（余白での中央揃え／フォントの指定） */
+.T_table {
+	margin: auto;
+	text-align: center;
+	font-family: serif;
+	font-size: 0.9em;
+}
+
+/*
+*  
+*/
+.S_table {
+	margin: auto;
+	text-align: center;
+	border-spacing: 0;
+}
+
+.S_table th {
+	border-bottom: solid 2px #fb5144;
+	padding: 10px 0;
+}
+
+.S_table td {
+	border-bottom: solid 2px #ADFF2F;
+	text-align: center;
+	padding: 1
+}
+
+/*
+* ページ移動リンクボタンの部分
+*/
+.btn {
+	display: inline-block;
+	padding: 0.4em 1.6em;
+	font-size: 0.9em;
+	font-weight: bold;
+	color: #000000;
+	text-decoration: none;
+	user-select: none;
+	border: 1px #000000 solid;
+}
+
+.btn:hover {
+	animation: pulse 1s;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(8, 15, 92, 0.9); }
+  100% { box-shadow: 0 0 0 1.2em rgba(0, 0, 0, 0); }
+}
+/*
+*ログイン入力フォームのデザイン
+*/
+.form {
+	box-sizing: border-box;
+	width: 100%;
+	height: 27px;
+	margin: 4px 0;
+	font-size: 18px;
+	color: #333;
+	border: 0;
+	border-top: none;
+	border-right: none;
+	border-bottom: 1px solid #ccc;
+	border-left: none;
+	outline: 0;
+	transition: 0.3s;
+	-webkit-appearance: none;
+}
+
+.form {
+	border: 1px solid #00b5ad;
+	border-top: none;
+	border-right: none;
+	border-left: none;
+}
+
+/*
+*ログインフォーム用ボタンデザイン
+*/
+Button {
+	display: inline-block;
+	padding: 0.4em 1.6em;
+	font-size: 0.9em;
+	font-weight: bold;
+	color: #000000;
+	text-decoration: none;
+	user-select: none;
+	border: 1px #000000 solid;
+	background-color: #ffffff;
+}
+
+Button:hover {
+	animation: pulse 1s;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(8, 15, 92, 0.9); }
+  100% { box-shadow: 0 0 0 1.2em rgba(0, 0, 0, 0); }
+}
+
+.button_wrapper {
+	text-align: center;
+}
+
+/** ランチ提案画面用のボタンデザイン */
+.hover-effect_slide {
+	position: relative;
+	display: inline-block;
+	padding: 0.4em 1.6em;
+	font-size: 1.2em;
+	color: #080f5c;
+	text-decoration: none;
+	user-select: none;
+	border: 1px #080f5c solid;
+	transition: 0.2s ease;
+}
+
+.hover-effect_slide::before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	width: 0;
+	height: 100%;
+	content: "";
+	background-color: #080f5c;
+	transition: 0.2s ease;
+}
+
+.hover-effect_slide:hover {
+	color: #fff;
+}
+
+.hover-effect_slide:hover::before {
+	width: 100%;
+	background: #080f5c;
+}
+/*
+*  評価の星の部分
+*/
+.evaluation {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: center;
+}
+
+.evaluation input[type='radio'] {
+	display: none;
+}
+
+.evaluation label {
+	position: relative;
+	padding: 10px 10px 0;
+	color: gray;
+	cursor: pointer;
+	font-size: 25px;
+}
+
+.evaluation label .text {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	text-align: center;
+	font-size: 12px;
+	color: gray;
+}
+
+.evaluation label:hover, .evaluation label:hover ~ label, .evaluation input[type='radio']:checked 
+	~ label {
+	color: #ffcc00;
+}
+
+/*
+*  表示する星の部分
+*/
+.star {
+	color: darkorange;
+}
+.star span{
+               color:black;
+}
+
+/*
+*  レビュー中身の部分
+*/
+.review {
+	text-align: left;
+	margin-left: 400px;
+}
+
+/*
+*  レビューの記入部分
+*/
+.review-write {
+	display: block;
+	width: 40%;
+	padding: 0.5em;
+	border: 1px solid #999;
+	box-sizing: border-box;
+	background: #f2f2f2;
+	margin: auto;
+	text-align: left;
+}

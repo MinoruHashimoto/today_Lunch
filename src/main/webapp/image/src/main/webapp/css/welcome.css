@@ -1,0 +1,158 @@
+/*/*
+* welcome.css用スタイルシート
+* ほぼ全部のHTMLに対応している。
+* 背景色を使う場合：color.css。
+* 背景画を使う場合：welcome.css。
+*/
+@charset "UTF-8";
+
+/* HEAD部分（中央揃え／背景色） */
+.head {
+	text-align: center;
+	font-family: serif;
+}
+
+/* TITLE部分（中央揃え） */
+.title {
+	text-align: center;
+	font-family: serif;
+}
+
+/* BODY部分（中央揃え／書体／背景画像／画像サイズ指定） */
+.body {
+	text-align: center;
+	font-family: serif;
+	background: url(../image/yo-sho-ku001.jpg);
+	background-size: cover;
+	max-width: 100%;
+	height: auto;
+}
+
+/* 見出し（各レベルごと）部分（中央揃え／文字サイズの指定） */
+.h1 {
+	text-align: center;
+	font-size: 28px;
+}
+
+.h2 {
+	font-size: 24px;
+}
+
+.h3 {
+	font-size: 22px;
+}
+
+/* 
+* プルダウンメニューの文字を変える。効いてなさそう。
+*/
+.select {
+	font-size: 24px;
+	font-family: serif;
+}
+
+/* 各入力フォーム（余白での中央揃え／フォントの指定） */
+.T_table {
+	margin: auto;
+	text-align: center;
+	font-family: serif;
+	font-size: 24px;
+}
+
+/*
+*  「提案画面」で表示される「店舗テーブル」の部分
+*/
+.p {
+	margin: auto;
+	text-align: center;
+}
+
+/*
+*斜める水色ボタン(使ってない)
+*/
+.btn-gradient-radius {
+	display: inline-block;
+	padding: 7px 20px;
+	border-radius: 25px;
+	text-decoration: none;
+	color: #FFF;
+	background-image: linear-gradient(45deg, #709dff 0%, #91fdb7 100%);
+	transition: .4s;
+}
+
+.btn-gradient-radius:hover {
+	-webkit-transform: rotate(10deg);
+	transform: rotate(10deg);
+}
+
+/*
+*回転ボタン
+*/
+.button {
+ display: inline-block;
+  width: 200px;
+  height: 54px;
+  text-align: center;
+  text-decoration: none;
+  line-height: 54px;
+  outline: none;
+  position: relative;
+  -webkit-perspective: 300px;
+  perspective: 300px;
+}
+.button::after {
+  position: absolute;
+  z-index: -1;
+  display: block;
+  content: '';
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+.button span {
+  display: block;
+  position: absolute;
+  width: 200px;
+  height: 60px;
+  border: 2px solid #333;
+  text-align: center;
+  line-height: 56px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  pointer-events: none;
+}
+.button span:nth-child(1) {
+  background-color: #333;
+  color: #fff;
+  -webkit-transform: rotateX(90deg);
+  -moz-transform: rotateX(90deg);
+  transform: rotateX(90deg);
+  -webkit-transform-origin: 50% 50% -30px;
+  -moz-transform-origin: 50% 50% -30px;
+  transform-origin: 50% 50% -30px;
+}
+.button span:nth-child(2) {
+  background-color: #fff;
+  color: #333;
+  -webkit-transform: rotateX(0deg);
+  -moz-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+  -webkit-transform-origin: 50% 50% -30px;
+  -moz-transform-origin: 50% 50% -30px;
+  transform-origin: 50% 50% -30px;
+}
+.button:hover span:nth-child(1) {
+  -webkit-transform: rotateX(0deg);
+  -moz-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+}
+.button:hover span:nth-child(2) {
+  background-color: #333;
+  -webkit-transform: rotateX(-90deg);
+  -moz-transform: rotateX(-90deg);
+  transform: rotateX(-90deg);
+}
