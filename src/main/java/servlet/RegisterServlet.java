@@ -40,9 +40,10 @@ public class RegisterServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		String age_str = request.getParameter("age");
 		int age = Integer.parseInt(age_str);
+		String gender = request.getParameter("gender");
 
 		// ユーザー登録処理の実行
-		Account register = new Account(userId, pass, mail, name, age);
+		Account register = new Account(userId, pass, mail, name, age, gender);
 		RegisterLogic bo = new RegisterLogic();
 		boolean result = bo.execute(register);
 		// ユーザー登録処理の成否によって処理を分岐

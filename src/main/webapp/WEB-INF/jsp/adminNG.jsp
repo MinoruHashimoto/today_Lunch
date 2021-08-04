@@ -3,13 +3,13 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<meta charset="UTF-8">
-<%-- スタイルシート呼び出し --%>
-<link rel="stylesheet" href="css/color.css">
 
 
 <head>
-	<title>&#x1f374;　本日のランチ　&#x1f374;</title>
+	<title>&#x1f374; 本日のランチ &#x1f374;</title>
+	<meta charset="UTF-8">
+	<%-- スタイルシート呼び出し --%>
+	<link rel="stylesheet" href="css/color.css">
 </head>
 
 <div class="body">

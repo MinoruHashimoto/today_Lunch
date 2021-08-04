@@ -11,18 +11,18 @@ List<Restaurant> rList = (List<Restaurant>) session.getAttribute("rList");
 <%-- 分離されたJSPテンプレート --%>
 <!DOCTYPE html>
 <html>
-<%-- スタイルシート呼び出し --%>
-<link rel="stylesheet" href="css/color.css">
-<meta charset="UTF-8">
+
 
 <head>
-<title>&#x1f374; 本日のランチ &#x1f374;</title>
+	<title>&#x1f374; 本日のランチ &#x1f374;</title>
+	<meta charset="UTF-8">
+	<%-- スタイルシート呼び出し --%>
+	<link rel="stylesheet" href="css/color.css">
 </head>
 
 
-
 <div class="body">
-	<%-- title上部に5行空白を開けるタグ<pre> --%>
+	<%-- 見出しの上部に5行空白を開けるタグ<pre> --%>
 	<pre>
 
 
@@ -30,8 +30,7 @@ List<Restaurant> rList = (List<Restaurant>) session.getAttribute("rList");
 
 
 	</pre>
-	<br>
-	<h1 class="title">&#x1f374; 店舗管理ページ &#x1f374;</h1>
+	<h2 class="title">&#x1f374; 店舗管理ページ &#x1f374;</h2>
 	<a href="/today_Lunch/ManageServlet"></a> <br> <br>［現在ログインしています］
 
 	<%
@@ -62,56 +61,58 @@ List<Restaurant> rList = (List<Restaurant>) session.getAttribute("rList");
 	<form action="/today_Lunch/AdminServlet" method="post">
 		<table class="T_table">
 			<tr>
-				<th>店舗名</th>
-				<td><input type="text" name="name" required title="1文字以上の文字列"></td>
+				<td><input type="text" class="form" placeholder="店舗名"
+					name="name" maxlength="50" required title="1文字以上の文字列" required /></td>
 			</tr>
 			<tr>
-				<th>ジャンル</th>
-				<td><input type="text" name="janru" required pattern="和食|洋食|中華"
-					title="「和食」「洋食」「中華」のうちどれか一つ"></td>
+				<td><input type="text" class="form" placeholder="ジャンル"
+					name="janru" required pattern="和食|洋食|中華"
+					title="「和食」「洋食」「中華」のうちどれか一つ" required /></td>
 			</tr>
 			<tr>
-				<th>距離区分</th>
-				<td><input type="text" name="distance" required
-					title="1文字以上の文字列"></td>
+				<td><input type="text" class="form" placeholder="距離区分"
+					name="distance" required title="1文字以上の文字列" maxlength="20" required /></td>
 			</tr>
 			<tr>
-				<th>定休日</th>
-				<td><input type="text" name="holiday" title="1文字以上の文字列"
-					required></td>
+				<td><input type="text" class="form" placeholder="定休日"
+					name="holiday" required title="1文字以上の文字列" maxlength="10" required /></td>
 			</tr>
 			<tr>
-				<th>電話番号</th>
-				<td><input type="tel" name="tel"
-					pattern="\d{2,4}-\d{3,4}-\d{3,4}" title="電話番号の形式　(例)090-1234-5678"
-					required></td>
+				<td><input type="tel" class="form" placeholder="電話番号"
+					name="tel" pattern="\d{2,4}-\d{3,4}-\d{3,4}"
+					title="電話番号の形式　(例)090-1234-5678" required /></td>
 			</tr>
 			<tr>
-				<th>値段区分</th>
-				<td><input type="tel" name="price" pattern="\d+"
-					title="1文字以上の半角数字" required></td>
+				<td><input type="tel" class="form" placeholder="値段区分"
+					name="price" pattern="\d+" title="1文字以上の数字" maxlength="8" required /></td>
 			</tr>
 			<tr>
-				<th>定番メニュー</th>
-				<td><input type="text" name="dishes" title="1文字以上の文字列" required></td>
+				<td><input type="text" class="form" placeholder="定番メニュー"
+					name="dishes" title="1文字以上の数字" maxlength="40" required /></td>
 			</tr>
 			<tr>
-				<th>URL</th>
-				<td><input type="url" name="url" required></td>
+				<td><input type="url" class="form" placeholder="URL" name="url"
+					maxlength="100" required /></td>
 			</tr>
 		</table>
-		<input type="submit" value="登録">
+		<pre>
+		</pre>
+		<div class="button_wrapper">
+			<button type="submit" id="gradual">登録</button>
+		</div>
 	</form>
+	<pre>
+	</pre>
 
 	<h2>店舗一覧</h2>
-	<table border="1">
+	<table class="S_table">
 		<tr>
 			<th>店舗ID</th>
 			<th>店名</th>
 			<th>ジャンル</th>
 			<th>定番メニュー</th>
-			<th>価格帯</th>
-			<th>距離</th>
+			<th>価格帯(円)</th>
+			<th>距離(m)</th>
 			<th>定休日</th>
 			<th>電話番号</th>
 			<th>編集</th>
@@ -124,7 +125,7 @@ List<Restaurant> rList = (List<Restaurant>) session.getAttribute("rList");
 			<td><%=restaurant.getId()%></td>
 			<td>
 				<h2>
-					<a href="<%=restaurant.getUrl()%>"><%=restaurant.getName()%></a>
+					<a target="_blank" href="<%=restaurant.getUrl()%>"><%=restaurant.getName()%></a>
 				</h2>
 			</td>
 			<td><%=restaurant.getJanru()%></td>
@@ -137,13 +138,13 @@ List<Restaurant> rList = (List<Restaurant>) session.getAttribute("rList");
 					method="get">
 					<input type="hidden" name="<%=restaurant.getId()%>"
 						value="<%=restaurant.getName()%>">
-					<button type="submit" name="button">編集</button>
+					<button type="submit" name="button" class="btn">編集</button>
 				</form></td>
 			<td><form action="/today_Lunch/DeleteRestaurantServlet"
 					method="post">
 					<input type="hidden" name="<%=restaurant.getId()%>"
 						value="<%=restaurant.getName()%>">
-					<button type="submit" name="button"
+					<button type="submit" name="button" class="btn"
 						onclick="return confirm('削除してよろしいですか？');">削除</button>
 				</form></td>
 		</tr>
@@ -161,13 +162,13 @@ List<Restaurant> rList = (List<Restaurant>) session.getAttribute("rList");
 
 
 
-
-	<a href="/today_Lunch/AdLogoutServlet">ログアウト</a>
-
-
-
-
+	</pre>
+	<a href="/today_Lunch/AdLogoutServlet" class="btn"><span>ログアウト</span></a>
+	<%-- body下部に3行空白を開けるタグ<pre> --%>
+	<pre>
 
 
+
+	</pre>
 </div>
 </html>

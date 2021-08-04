@@ -23,7 +23,6 @@ public class DeleteRestaurantServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		//リクエストスコープから店舗ID(,店舗名)を取得
 		int i = 1;
 		String r_name = null;
@@ -38,9 +37,10 @@ public class DeleteRestaurantServlet extends HttpServlet {
 		RestaurantDAO dao = new RestaurantDAO();
 		boolean bo = dao.delete(i);
 		if (bo) {
-			request.setAttribute("deleteMsg", "登録店舗を1件削除しました。");
+			request.setAttribute("deleteMsg", "「"+r_name+"」を削除しました。");
 		}
 
+		
 		//表示する、更新された店舗一覧を取得
 		GetRestaurantListLogic getRestaurantListLogic = new GetRestaurantListLogic();
 		List<Restaurant> rList = getRestaurantListLogic.execute();

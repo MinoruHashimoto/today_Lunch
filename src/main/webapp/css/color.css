@@ -6,31 +6,23 @@
 */
 @charset "UTF-8";
 
-/* HEAD部分（中央揃え／背景色） */
-.head {
-	text-align: center;
-	font-family:serif; 
-	background-color:maroon;
-}
+/* HEAD部分をここでは指定しない */
 
 
 /* TITLE部分（中央揃え） */
-.title{
+.title {
 	text-align: center;
-	font-family:serif; 
-	background-color:maroon;
+	font-family: serif;
 }
 
-
 /* BODY部分（中央揃え／書体／背景色） */
-.body{
+.body {
 	text-align: center;
-	font-family:serif; 
-	background-color:maroon;
+	font-family: serif;
 }
 
 /* 見出し（各レベルごと）部分（中央揃え／文字サイズの指定） */
-.h1{
+.h1 {
 	text-align: center;
 	font-size: 28px;
 }
@@ -39,44 +31,595 @@
 	font-size: 24px;
 }
 
-.h3{
+.h3 {
 	font-size: 22px;
 }
 
-/* 
-* プルダウンメニューの文字を変える。効いてなさそう。
-*/
+/* プルダウンメニューの文字を変える。効いてなさそう。
 .select {
 	font-size: 24px;
-	font-family:serif; 
-}
+	font-family: serif;
+}*/
+
 
 /* 入力フォーム（余白での中央揃え／フォントの指定） */
 .T_table {
-	margin:auto;
+	margin: auto;
 	text-align: center;
-	font-family:serif; 
-	font-size: 24px;
+	font-family: serif;
+	font-size: 0.9em;
+}
+
+/*　おもに提案画面で表示する店舗一覧を見やすくする　*/
+.S_table {
+	margin: auto;
+	text-align: center;
+	border-spacing: 0;
+}
+
+.S_table th {
+	border-bottom: solid 2px #fb5144;
+	border-left: solid 0.05px whitesmoke;
+	border-right: solid 0.05px whitesmoke;
+	background-color: snow;
+	padding: 10px 0;
+}
+
+.S_table td {
+	border-bottom: solid 2px #ADFF2F;
+	border-right: solid 0.01px whitesmoke;
+	padding: 1
+}
+
+.S_table td.data-comment{
+	border-right: none;
+	border-left: none;
 }
 
 /*
 *  「提案画面」で表示される「店舗テーブル」の部分
 */
-.p{
-	margin:auto;
+.p {
+	margin: auto;
 	text-align: center;
 }
 
-.Likes{
-   position: relative;
- }
-.Likes-Icon{
-   position: absolute;
-   left: -48px;
-   background: url("./img/heart_animation.png");
-   background-position: left;
-   background-size: 2900%;
-   background-repeat: no-repeat;
-   width: 105px;
-   height: 105px;
- }
+/*
+* ページ移動リンクボタンの部分
+*/
+.btn {
+	display: inline-block;
+	padding: 0.4em 1.6em;
+	font-size: 0.9em;
+	font-weight: bold;
+	color: #000000;
+	text-decoration: none;
+	user-select: none;
+	border: 1px #000000 solid;
+}
+
+.btn:hover {
+	animation: pulse 1s;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(8, 15, 92, 0.9); }
+  100% { box-shadow: 0 0 0 1.2em rgba(0, 0, 0, 0); }
+}
+
+/*
+* ジャンルや価格帯、並び替えのプルダウンの部分
+*/
+.cp_ipselect {
+	position: relative;
+	width: 30%;
+	margin: 2em auto;
+	text-align: center;
+}
+.cp_sl06 {
+	position: relative;
+	font-family: inherit;
+	background-color: transparent;
+	width: 100%;
+	padding: 10px 10px 10px 0;
+	font-size: 18px;
+	border-radius: 0;
+	border: none;
+	border-bottom: 1px solid rgba(0,0,0, 0.3);
+}
+.cp_sl06:focus {
+	outline: none;
+	border-bottom: 1px solid rgba(0,0,0, 0);
+}
+.cp_ipselect .cp_sl06 {
+	appearance: none;
+	-webkit-appearance:none
+}
+.cp_ipselect select::-ms-expand {
+	display: none;
+}
+.cp_ipselect:after {
+	position: absolute;
+	top: 18px;
+	right: 10px;
+	width: 0;
+	height: 0;
+	padding: 0;
+	content: '';
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 6px solid rgba(0, 0, 0, 0.3);
+	pointer-events: none;
+}
+.cp_sl06_selectlabel {
+	color: rgba(0,0,0, 0.5);
+	font-size: 18px;
+	font-weight: normal;
+	position: absolute;
+	pointer-events: none;
+	left: 0;
+	top: 10px;
+	transition: 0.2s ease all;
+}
+.cp_sl06:focus ~ .cp_sl06_selectlabel, .cp_sl06:valid ~ .cp_sl06_selectlabel {
+	color: #00b5ad;;
+	top: -20px;
+	transition: 0.2s ease all;
+	font-size: 14px;
+}
+.cp_sl06_selectbar {
+	position: relative;
+	display: block;
+	width: 100%;
+}
+.cp_sl06_selectbar:before, .cp_sl06_selectbar:after {
+	content: '';
+	height: 2px;
+	width: 0;
+	bottom: 1px;
+	position: absolute;
+	background:#00b5ad;;
+	transition: 0.2s ease all;
+}
+.cp_sl06_selectbar:before {
+	left: 50%;
+}
+.cp_sl06_selectbar:after {
+	right: 50%;
+}
+.cp_sl06:focus ~ .cp_sl06_selectbar:before, .cp_sl06:focus ~ .cp_sl06_selectbar:after {
+	width: 50%;
+}
+.cp_sl06_highlight {
+	position: absolute;
+	top: 25%;
+	left: 0;
+	pointer-events: none;
+	opacity: 0.5;
+}
+
+
+/*
+*ログイン入力フォームのデザイン
+*/
+.form {
+	box-sizing: border-box;
+	width: 400px;
+	height: 27px;
+	margin: 4px 0;
+	font-size: 18px;
+	color: #333;
+	border: 0;
+	border-top: none;
+	border-right: none;
+	border-bottom: 1px solid #ccc;
+	border-left: none;
+	outline: 0;
+	transition: 0.3s;
+	-webkit-appearance: none;
+}
+
+.form {
+	border: 1px solid #00b5ad;
+	border-top: none;
+	border-right: none;
+	border-left: none;
+}
+
+/*
+*ログインフォーム用ボタンデザイン
+*/
+Button#gradual {
+	display: inline-block;
+	padding: 0.4em 1.6em;
+	font-size: 0.9em;
+	font-weight: bold;
+	color: #000000;
+	text-decoration: none;
+	user-select: none;
+	border: 1px #000000 solid;
+	background-color: #ffffff;
+}
+
+Button#gradual:hover {
+	animation: pulse 1s;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(8, 15, 92, 0.9); }
+  100% { box-shadow: 0 0 0 1.2em rgba(0, 0, 0, 0); }
+}
+
+.button_wrapper {
+	text-align: center;
+}
+
+/** ランチ提案画面用のボタンデザイン */
+.hover-effect_slide {
+	position: relative;
+	display: inline-block;
+	padding: 0.4em 1.6em;
+	font-size: 1.2em;
+	color: #080f5c;
+	text-decoration: none;
+	user-select: none;
+	border: 1px #080f5c solid;
+	transition: 0.2s ease;
+}
+
+.hover-effect_slide::before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	width: 0;
+	height: 100%;
+	content: "";
+	background-color: #080f5c;
+	transition: 0.2s ease;
+}
+
+.hover-effect_slide:hover {
+	color: #fff;
+}
+
+.hover-effect_slide:hover::before {
+	width: 100%;
+	background: #080f5c;
+}
+
+/*
+*  フォローボタン
+*/
+
+.flat.border {
+  position: relative;
+  text-align: center;
+  /* 中央揃え */
+  display: block;
+  margin: 0 auto;
+  /* 幅の指定 */
+  width: 100%;
+  max-width: 200px;
+  box-sizing: border-box;
+  padding: 10px;
+  /* 色の指定 */
+  background: linear-gradient(135deg, #ffd900, #ff9300);
+  font-weight: bold;
+  border-radius: 8px;
+  transition: 0.3s;
+  border: solid 2px #67c5ff;
+  background: #fff;
+  color: #67c5ff;
+}
+.flat.border:hover {
+  background: #67c5ff;
+  color: white;
+}
+.flat.border:active, .flat.border:focus, 
+.flat.black-border:active, .flat.black-border:focus,
+.flat.airplane:active, .flat.airplane:focus {
+  top: 2px;
+}
+
+  /* アンフォローボタンは色を反転する */
+#reverse{
+	background:#67c5ff !important;
+	color:#fff !important;
+}
+#reverse:hover{
+	background:#fff !important;
+	color:#67c5ff !important;
+}
+
+/*
+*  口コミを見るボタン
+*/
+
+.flat.black-border {
+  position: relative;
+  text-align: center;
+  /* 中央揃え */
+  display: block;
+  margin: 0 auto;
+  /* 幅の指定 */
+  width: 100%;
+  max-width: 200px;
+  box-sizing: border-box;
+  padding: 10px;
+  /* 色の指定 */
+  background: linear-gradient(135deg, #ffd900, #ff9300);
+  color: darkorange;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: 0.3s;
+  border: solid 2px darkorange;
+  background: white;
+}
+
+.flat.black-border:hover {
+  background: darkorange;
+  color: white;
+}
+
+/*
+*  口コミ送信ボタン
+*/
+
+.flat.airplane {
+  position: relative;
+  text-align: center;
+  /* 中央揃え */
+  display: block;
+  margin: 0;
+  /* 幅の指定 */
+  width:46px;
+  height:46px;
+  box-sizing: border-box;
+  padding: 0px;
+  /* 色の指定 */
+  background: linear-gradient(135deg, #ffd900, #ff9300);
+  color: royalblue;
+  border: 0;
+  border-radius:46px;
+  font-size: 18px ;
+  transition: 0.3s;
+  background: white;
+}
+
+.flat.airplane:hover {
+  background: royalblue;
+  color: white;
+}
+
+.align{
+	display:inline-block;
+}
+
+/*
+*  評価の星の部分
+*/
+.evaluation {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: center;
+}
+
+.evaluation input[type='radio'] {
+	display: none;
+}
+
+.evaluation label {
+	position: relative;
+	padding: 10px 10px 0;
+	color: gray;
+	cursor: pointer;
+	font-size: 25px;
+}
+
+.evaluation label .text {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	text-align: center;
+	font-size: 12px;
+	color: gray;
+}
+
+.evaluation label:hover, .evaluation label:hover ~ label, .evaluation input[type='radio']:checked 
+	~ label {
+	color: #ffcc00;
+}
+.line-side{
+	justify-content: space-around;
+}
+
+
+/*
+*  表示する星の部分
+*/
+.star {
+	color: darkorange;
+}
+.star span{
+               color:black;
+}
+
+/*
+*  ライン風レビューの部分
+*/
+.closely{
+	font-size:0;
+}
+
+/*以下、背景色など*/
+.line-bc {
+  padding: 0;
+  max-width: 450px;
+  margin: 0px auto;
+  text-align: right;
+  font-size: 14px;
+  background: #7da4cd;
+  border: 1px solid #7da4cd;
+}
+.line-top {
+  padding: 5 auto;
+  max-width: 450px;
+  margin: 0px auto;
+  text-align: center;
+  font-size: 20px;
+  color:white;
+  font-weight:bold;
+  background: midnightblue;
+  border: 1px solid midnightblue;
+}
+/*以下、口コミがまだなかった場合のメッセージ*/
+.noRestaurant{
+  text-align:center !important;
+  margin: 10px auto;
+  width:250px;
+  color:white;
+  border-radius:14px;
+  background:gray;
+}
+
+/*以下、左側のコメント*/
+.balloon6 {
+  width: 100%;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.balloon6 .faceicon {
+  float: left;
+  margin-right: -50px;
+  width: 40px;
+  height: 40px;
+}
+
+ img{
+  width: 100%;
+  height: auto;
+
+  z-index:1000;
+}
+
+.boy-icon{
+  height: 40px;
+	background: url(../image/boy.png);
+  border-radius: 40px;
+}
+
+.girl-icon{
+  height: 40px;
+	background: url(../image/girl.png);
+  border-radius: 40px;
+}
+
+.balloon6 .chatting {
+  width: 100%;
+  text-align: left;
+}
+.says {
+  display: inline-block;
+  position: relative; 
+  margin: 0 0 0 50px;
+  padding: 10px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #edf1ee;
+}
+
+.says:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px; 
+  left: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #edf1ee;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+.says p {
+  margin: 0;
+  padding: 0;
+}
+
+/*以下、③右側の緑コメント*/
+.mycomment {
+  margin: 10px 0;
+}
+.mycomment p {
+  display: inline-block;
+  position: relative; 
+  margin: 0 10px 0 0;
+  padding: 8px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #30e852;
+  font-size: 15px;
+}
+
+.mycomment p:after {
+  content: "";
+  position: absolute;
+  top: 3px; 
+  right: -19px;
+  border: 8px solid transparent;
+  border-left: 18px solid #30e852;
+  -webkit-transform: rotate(-35deg);
+  transform: rotate(-35deg);
+}
+
+/*以下、口コミ記入箇所の背景色など*/
+.write-bc {
+  padding: 0px;
+  max-width: 450px;
+  margin: 0px auto;
+  text-align: right;
+  font-size: 14px;
+  background: white;
+	border: 1px solid #999;
+}
+/*
+*  レビューの記入部分
+*/
+.review-write {
+	display: block;
+	width: 95%;
+	padding: 12px;
+	border: 1px solid #999;
+	box-sizing: border-box;
+	background: white;
+	margin: 0px 5px 10px;
+	text-align: left;
+	border-radius:16px;
+}
+
+
+
+
+/* ページTOPに戻る */
+.pagetop{
+    display: none;
+    position: fixed;
+    right: 15px;
+    bottom: 60px;
+}
+.pagetop a{
+    display: block;
+    font-size: 0;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    background: #7db4e6;
+    border-radius: 50%;
+    line-height: 50px;
+}
+.pagetop a i{
+    font-size: 20px;
+    color:#fff;
+    line-height: 50px;
+}

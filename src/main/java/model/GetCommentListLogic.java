@@ -11,6 +11,7 @@ public class GetCommentListLogic {
   public List<Comment> execute(int r_id) {
     CommentDAO dao = new CommentDAO();
     List<Comment> commentList = dao.findBy(r_id);
+    
     return commentList;
   }
 }

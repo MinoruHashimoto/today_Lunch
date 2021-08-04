@@ -4,16 +4,18 @@
 <%-- 分離されたJSPテンプレート --%>
 <!DOCTYPE html>
 <html>
-<%-- スタイルシート呼び出し --%>
-<link rel="stylesheet" href="css/color.css">
-<meta charset="UTF-8">
 
-<div class="head">
-	<title>&#x1f374;　店舗管理ページ　&#x1f374;</title>
-</div>
+
+<head>
+	<title>&#x1f374; 本日のランチ &#x1f374;</title>
+	<meta charset="UTF-8">
+	<%-- スタイルシート呼び出し --%>
+	<link rel="stylesheet" href="css/color.css">
+</head>
+
 
 <div class="body">
-	<%-- title上部に5行空白を開けるタグ<pre> --%>
+	<%-- 見出しの上部に5行空白を開けるタグ<pre> --%>
 	<pre>
 
 
@@ -21,10 +23,28 @@
 
 
 	</pre>
-	
-	<h1>&#x1f374;　ログアウト　&#x1f374;</h1>
+	<h2>&#x1f374;　店舗管理ページ　&#x1f374;</h2>
 	<p>ログアウトしました。</p>	<br>
-	<a href="/today_Lunch/welcome.jsp">トップページへ戻る</a>
+<div class="button_wrapper">　
+	<a href="/today_Lunch/welcome.jsp" class="btn"><span>トップへ戻る</span></a>　
+</div>
+	<%-- body下部に15行空白を開けるタグ<pre> --%>
+	<pre>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</pre>
 </div>
 </html>

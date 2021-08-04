@@ -94,7 +94,7 @@ public class RestaurantDAO {
 	}
 
 	//提案画面で店舗検索結果表示に用いるメソッド
-	public List<Restaurant> findBy(String janru_, String price_, String keyword) {
+	public List<Restaurant> findBy(String janru_, String price_, String keyword, String sort) {
 		// データベースへ接続
 		try (Connection conn = DriverManager.getConnection(
 				JDBC_URL, DB_USER, DB_PASS)) {
@@ -106,6 +106,13 @@ public class RestaurantDAO {
 			} else {
 				sql = makeSentence(janru_, price_, keyword);
 			}
+
+			if(sort.equals("安い順")) {
+				sql += "ORDER BY PRICE ";
+			}else if(sort.equals("近い順")){
+				sql += "ORDER BY DISTANCE ";
+			}
+			
 			//SQL文をDBに届けるPreparedStatementインスタンス取得
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
@@ -188,6 +195,7 @@ public class RestaurantDAO {
 
 		return restaurant;
 	}
+	
 
 	//管理画面で店舗一覧表示に用いるメソッド
 	public List<Restaurant> findAll() {
@@ -233,8 +241,9 @@ public class RestaurantDAO {
 		try (Connection conn = DriverManager.getConnection(
 				JDBC_URL, DB_USER, DB_PASS)) {
 
+			System.out.println("ResDAO236にはいる");
 			// INSERT文の準備
-			String sql = "INSERT INTO RESTAURANT(NAME, JANRU, DISTANCE HOLIDAY,"
+			String sql = "INSERT INTO RESTAURANT(NAME, JANRU, DISTANCE, HOLIDAY,"
 					+ " TEL, PRICE, DISHES, URL) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			// INSERT文中の「?」に使用する値を設定しSQLを完成
@@ -246,10 +255,9 @@ public class RestaurantDAO {
 			pStmt.setInt(6, restaurant.getPrice());
 			pStmt.setString(7, restaurant.getDishes());
 			pStmt.setString(8, restaurant.getUrl());
-
-			// INSERT文を実行
 			int result = pStmt.executeUpdate();
-
+			
+			// INSERT文を実行
 			if (result != 1) {
 				return false;
 			}
@@ -304,7 +312,6 @@ public class RestaurantDAO {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			// DELETE文中の「?」に使用する値を設定しSQLを完成
 			pStmt.setInt(1, id);
-
 			// DELETE文を実行
 			int result = pStmt.executeUpdate();
 

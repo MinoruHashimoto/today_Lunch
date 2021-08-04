@@ -2,14 +2,15 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<meta charset="UTF-8">
-<%-- スタイルシート呼び出し --%>
-<link rel="stylesheet" href="css/color.css">
 
 
 <head>
-<title>&#x1f374; 本日のランチ &#x1f374;</title>
+	<title>&#x1f374; 本日のランチ &#x1f374;</title>
+	<meta charset="UTF-8">
+	<%-- スタイルシート呼び出し --%>
+	<link rel="stylesheet" href="css/color.css">
 </head>
+
 
 <div class="body">
 	<%-- BODY下部に5行空白を開けるタグ<pre> --%>
@@ -21,8 +22,14 @@
 
 	</pre>
 	<h1>&#x1f374; ログイン失敗 &#x1f374;</h1>
+	<pre>
+	</pre>
 	<p>ログインに失敗しました。</p>
-	<a href="/today_Lunch/LoginServlet">再試行</a>
-	 <a href="/today_Lunch/welcome.jsp">TOP画面へ戻る</a>
+	<pre>
+	</pre>
+	<div class="button_wrapper">
+	<a href="/today_Lunch/LoginServlet" class="btn">再試行</a>
+	　<a href="/today_Lunch/welcome.jsp" class="btn">TOP画面へ戻る</a>
+	</div>
 </div>
 </html>

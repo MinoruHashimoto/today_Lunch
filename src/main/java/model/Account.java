@@ -10,14 +10,16 @@ public class Account {
   private String mail;
   private String name;
   private int age;
+  private String gender;
 
   public Account(String userId, String pass, String mail,
-      String name, int age) {
+      String name, int age, String gender) {
     this.userId = userId;
     this.pass = pass;
     this.mail = mail;
     this.name = name;
     this.age = age;
+    this.gender = gender;
   }
   
   public String getUserId() {
@@ -25,7 +27,7 @@ public class Account {
   }
 
   public String getPass() {
-    return pass;
+	return pass;
   }
 
   public String getMail() {
@@ -38,5 +40,9 @@ public class Account {
 
   public int getAge() {
     return age;
+  }
+  
+  public String getGender() {
+	  return gender;
   }
 }

@@ -3,6 +3,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -13,7 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.AccountDAO;
+import model.Account;
 import model.Comment;
+import model.GetAverageStarLogic;
 import model.GetCommentListLogic;
 import model.GetRestaurantListLogic;
 import model.PostCommentLogic;
@@ -54,7 +58,16 @@ public class CommentServlet extends HttpServlet {
 				
 		//該当するコメントデータがDB内になければその旨を表示する
 		if (cList.size() == 0) {
-			request.setAttribute("noComment", "コメントはまだありません。");
+			request.setAttribute("noComment", "口コミはまだありません。");
+		}else {
+			for (Comment comment : cList) {
+				//取得した各コメントに対して、書いたユーザーIDを取得
+				String u_id = (String) comment.getU_id();
+				//そのユーザー情報を取得し、セッションスコープに保存
+				AccountDAO dao = new AccountDAO();
+				Account account=dao.findBy(u_id);
+				session.setAttribute(u_id+"'s_account", account);
+				}
 		}
 
 		// フォワード
@@ -67,15 +80,22 @@ public class CommentServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// リクエストパラメータの取得
 		request.setCharacterEncoding("UTF-8");
+		String star_str = request.getParameter("star");
+		int star = Integer.parseInt(star_str);
+		String title = request.getParameter("title");
 		String text = request.getParameter("text");
 
 		// セッションスコープに保存されているユーザー情報と店舗名を取得
 		HttpSession session = request.getSession();
 		int r_id = (int) session.getAttribute("r_id");
-		String userId = (String) session.getAttribute("userId");
+		Account account = (Account) session.getAttribute("account");
+		String u_id = account.getUserId();
+		
+		//現在時刻のTimestamp取得
+		Timestamp time = new Timestamp(System.currentTimeMillis());
 
 		// コメントをコメントリストに追加
-		Comment comment = new Comment(r_id, userId, text);
+		Comment comment = new Comment(r_id, u_id, star, title, text, time);
 		PostCommentLogic postCommentLogic = new PostCommentLogic();
 		postCommentLogic.execute(comment);
 
@@ -83,6 +103,12 @@ public class CommentServlet extends HttpServlet {
 		GetCommentListLogic getCommentListLogic = new GetCommentListLogic();
 		List<Comment> cList = getCommentListLogic.execute(r_id);
 		session.setAttribute("cList", cList);
+
+		//更新されたレビューの星の数の平均を、セッションスコープに保存
+		String r_id_str = String.valueOf(r_id);
+		GetAverageStarLogic gLogic = new GetAverageStarLogic();
+		double avgStar = gLogic.execute(r_id);
+		session.setAttribute("avg"+r_id_str, avgStar);
 
 		// フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher(

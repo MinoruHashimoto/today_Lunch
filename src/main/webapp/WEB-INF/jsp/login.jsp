@@ -2,13 +2,15 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<%-- スタイルシート呼び出し --%>
-<link rel="stylesheet" href="css/color.css">
-<meta charset="UTF-8">
+
 
 <head>
-<title>&#x1f374; 本日のランチ &#x1f374;</title>
+	<title>&#x1f374; 本日のランチ &#x1f374;</title>
+	<meta charset="UTF-8">
+	<%-- スタイルシート呼び出し --%>
+	<link rel="stylesheet" href="css/color.css">
 </head>
+
 
 <div class="body">
 	<%-- title上部に5行空白を開けるタグ<pre> --%>
@@ -24,18 +26,22 @@
 	<form action="/today_Lunch/LoginServlet" method="post">
 		<table class="T_table">
 			<tr>
-				<th>ID:</th>
-				<td><input type="text" name="userId" maxlength='10' required></td>
+				<td><input type="text" class="form" placeholder="ID"
+					name="userId" maxlength='10' required /></td>
 			</tr>
 			<tr>
-				<th>パスワード:</th>
-				<td><input type="password" name="pass" maxlength='10' required></td>
+				<td><input type="password" class="form" placeholder="Password"
+					name="pass" maxlength='10' required /></td>
 			</tr>
 			<tr>
-				<th>&nbsp;</th>
-				<td><input type="submit" value="ログイン" /></td>
+				<th></th>
 			</tr>
 		</table>
+		<pre>
+		</pre>
+		<div class="button_wrapper">
+			<button type="submit" id="gradual">ログイン</button>
+		</div>
 	</form>
 	<%-- body下部に7行空白を開けるタグ<pre> --%>
 	<pre>
@@ -47,7 +53,9 @@
 
 
 	</pre>
-	<a href="/today_Lunch/RegisterServlet">新規ユーザー登録</a>
-	<a href="/today_Lunch/welcome.jsp">トップへ戻る</a>
+	<div class="button_wrapper">
+		<a href="/today_Lunch/RegisterServlet" class="btn"><span>ユーザー登録</span></a>
+		　<a href="/today_Lunch/welcome.jsp" class="btn"><span>トップへ戻る</span></a>
+	</div>
 </div>
 </html>

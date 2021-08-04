@@ -2,22 +2,24 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<meta charset="UTF-8">
-<%-- スタイルシート呼び出し --%>
-<link rel="stylesheet" href="css/color.css">
+
 
 <head>
+	<title>&#x1f374; 本日のランチ &#x1f374;</title>
+	<meta charset="UTF-8">
+	<%-- スタイルシート呼び出し --%>
+	<link rel="stylesheet" href="css/color.css">
+</head>
+
+
+<div class="body">
 <pre>
 
 
 
 
 
-	</pre>
-<h1 class="title">&#x1f374; 本日のランチ &#x1f374;</h1>
-</head>
-
-<div class="body">
+</pre>
 	<h1>&#x1f374; ユーザー登録画面 &#x1f374;</h1>
 	<p>すべて記入してください。</p>
 	<p>※IDは半角英数字10文字まで。</p>
@@ -25,31 +27,48 @@
 	<form action="/today_Lunch/RegisterServlet" method="post">
 		<table class="T_table">
 			<tr>
-				<th>ID</th>
-				<td><input type="text" name="userId" maxlength='10' required></td>
+				<td><input type="text" class="form" placeholder="ID"
+					name="userId" maxlength='10' required /></td>
 			</tr>
 			<tr>
-				<th>パスワード</th>
-				<td><input type="password" name="pass" maxlength='10' required></td>
+				<td><input type="password" class="form" placeholder="Password"
+					name="pass" maxlength='10' required /></td>
 			</tr>
 			<tr>
-				<th>氏名</th>
-				<td><input type="text" name="name" maxlength='40' required></td>
+				<td><input type="text" class="form" placeholder="氏名"
+					name="name" maxlength='10' required /></td>
 			</tr>
 			<tr>
-				<th>年齢</th>
-				<td><input type="text" name="age" pattern="\d+"
-					title="1文字以上の半角数字" required></td>
+				<td><input type="text" class="form" placeholder="年齢" name="age"
+					maxlength='10' pattern="1[0-9]|[2-9][0-9]|1[01][0-9]"
+					title="あなたの年齢（半角数字)(10～119）" required /></td>
 			</tr>
 			<tr>
-				<th>メールアドレス</th>
-				<td><input type="email" name="mail" required></td>
+				<td><input type="email" class="form" placeholder="メールアドレス"
+					name="mail" maxlength='10' required /></td>
 			</tr>
 		</table>
-		<input type="submit" value="登録">
+		<div class="cp_ipselect">
+			<select name="gender" class="cp_sl06" required>
+				<option value="hidden" disabled selected></option>
+				<option value="男性">男性</option>
+				<option value="女性">女性</option>
+			</select> <span class="cp_sl06_highlight"></span> <span
+				class="cp_sl06_selectbar"></span> <label class="cp_sl06_selectlabel">性別</label>
+		</div>
+		<pre></pre>
+		<div class="button_wrapper">
+			<button type="submit" id="gradual">登録</button>
+		</div>
 	</form>
+	<pre>
 
-	<br> <a href="/today_Lunch/LoginServlet">ログイン</a> 
-	<a href="/today_Lunch/welcome.jsp">TOP画面へ戻る</a>
+
+
+		</pre>
+	<div class="button_wrapper">
+		<a href="/today_Lunch/LoginServlet" class="btn"><span>ログイン</span></a>
+		　<a href="/today_Lunch/welcome.jsp" class="btn"><span>トップへ戻る</span></a>
+	</div>
 </div>
 </html>

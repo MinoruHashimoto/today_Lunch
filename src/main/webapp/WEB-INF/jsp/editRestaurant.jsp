@@ -9,15 +9,17 @@ Restaurant restaurant = (Restaurant) session.getAttribute("restaurant");
 %>
 <!DOCTYPE html>
 <html>
-<%-- スタイルシート呼び出し --%>
-<link rel="stylesheet" href="css/color.css">
-<div align="center">
-	<head>
-<meta charset="UTF-8">
-<%-- 中央揃えのコード<center> --%>
-<title>&#x1f374; 本日のランチ &#x1f374;</title>
-	</head>
-	<body>
+
+
+<head>
+	<title>&#x1f374; 本日のランチ &#x1f374;</title>
+	<meta charset="UTF-8">
+	<%-- スタイルシート呼び出し --%>
+	<link rel="stylesheet" href="css/color.css">
+</head>
+
+
+<div class="body">
 		<%-- title上部に5行空白を開けるタグ<pre> --%>
 		<pre>
 
@@ -42,49 +44,45 @@ select {
 		<form action="/today_Lunch/EditRestaurantServlet" method="post">
 			<table class="T_table">
 				<tr>
-					<th>店舗名</th>
-					<td><input type="text" name="name" required title="1文字以上の文字列"
+					<td><input type="text" class="form" placeholder="店舗名" name="name" required title="1文字以上の文字列"
 					value="<%=restaurant.getName()%>"></td>
 				</tr>
 				<tr>
-					<th>ジャンル</th>
-					<td><input type="text" name="janru" required
+					<td><input type="text" class="form" placeholder="ジャンル" name="janru" required
 						pattern="和食|洋食|中華" title="「和食」「洋食」「中華」のうちどれか一つ"
 					value="<%=restaurant.getJanru()%>"></td>
 				</tr>
 				<tr>
-					<th>距離区分</th>
-					<td><input type="text" name="distance" required
+					<td><input type="text" class="form" placeholder="距離（m）" name="distance" required
 						title="1文字以上の文字列" value="<%=restaurant.getDistance()%>"></td>
 				</tr>
 				<tr>
-					<th>定休日</th>
-					<td><input type="text" name="holiday" title="1文字以上の文字列"
+					<td><input type="text" class="form" placeholder="定休日" name="holiday" title="1文字以上の文字列"
 						value="<%=restaurant.getHoliday()%>"required></td>
 				</tr>
 				<tr>
-					<th>電話番号</th>
-					<td><input type="tel" name="tel"
+					<td><input type="tel" class="form" placeholder="電話番号" name="tel"
 						pattern="\d{2,4}-\d{3,4}-\d{3,4}" title="電話番号の形式　(例)090-1234-5678"
 						value="<%=restaurant.getTel()%>"required></td>
 				</tr>
 				<tr>
-					<th>値段区分</th>
-					<td><input type="tel" name="price" pattern="\d+"
+					<td><input type="tel" class="form" placeholder="価格帯（円）" name="price" pattern="\d+"
 						title="1文字以上の数字" required value="<%=restaurant.getPrice()%>"></td>
 				</tr>
 				<tr>
-					<th>定番メニュー</th>
-					<td><input type="text" name="dishes" title="1文字以上の文字列"
+					<td><input type="text" class="form" placeholder="定番メニュー" name="dishes" title="1文字以上の文字列"
 					value="<%=restaurant.getDishes()%>" required></td>
 				</tr>
 				<tr>
-					<th>URL</th>
-					<td><input type="url" name="url" required
+					<td><input type="url" class="form" placeholder="URL" name="url" required
 					value="<%=restaurant.getUrl()%>"></td>
 				</tr>
 			</table>
-			<input type="submit" value="変更">
+			<pre>
+			</pre>
+			<div class="button_wrapper">
+		<button type="submit" id="gradual">変更</button>
+		</div>
 		</form>
 		<%-- 3行空けるタグ<pre> --%>
 		<pre>
@@ -92,7 +90,9 @@ select {
 
 
 		</pre>
-		<a href="/today_Lunch/AdminServlet">戻る</a>
+		<div class="button_wrapper">
+		<a href="/today_Lunch/AdminServlet" class="btn">戻る</a>
+		</div>
 </div>
 </body>
 </html>
